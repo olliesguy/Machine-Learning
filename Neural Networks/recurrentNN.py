@@ -46,14 +46,14 @@ for j in range(10000):
     c_int = a_int + b_int
     c = int2binary[c_int]
 
-    # Where we'' store our best guess (binary encoded).
+    # Where we'll store our best guess (binary encoded).
     d = np.zeros_like(c)
 
     overallError = 0
 
-    layer_2_deltas = list()
-    layer_1_values = list()
-    layer_1_values.append(np.zeros(hidden_dim))
+    l2_deltas = list()
+    l1_values = list()
+    l1_values.append(np.zeros(hidden_dim))
 
     # Moving along the positions in the binary encoding.
     for position in range(binary_dim):
@@ -62,40 +62,40 @@ for j in range(10000):
         y = np.array([[c[binary_dim - position - 1]]]).T
 
         # Hidden layer (input ~+ prev_hidden)
-        layer_1 = sigmoid(np.dot(X, synapse_0) + np.dot(layer_1_values[-1], synapse_h))
+        l1 = sigmoid(np.dot(X, synapse_0) + np.dot(l1_values[-1], synapse_h))
 
         # Output layer (new binary representation).
-        layer_2 = sigmoid(np.dot(layer_1, synapse_1))
+        l2 = sigmoid(np.dot(l1, synapse_1))
 
         #Did we miss? ... if so, by how much?
-        layer_2_error = y - layer_2
-        layer_2_deltas.append((layer_2_error)*sigmoid_output_to_derivative(layer_2))
-        overallError += np.abs(layer_2_error[0])
+        l2_error = y - l2
+        l2_deltas.append((l2_error)*sigmoid_output_to_derivative(l2))
+        overallError += np.abs(l2_error[0])
 
         # Decode estimate so we can print it out.
-        d[binary_dim - position - 1] = np.round(layer_2[0][0])
+        d[binary_dim - position - 1] = np.round(l2[0][0])
 
         # Store hidden layer so we can use it in the next timestep.
-        layer_1_values.append(copy.deepcopy(layer_1))
+        l1_values.append(copy.deepcopy(l1))
 
-    future_layer_1_delta = np.zeros(hidden_dim)
+    future_l1_delta = np.zeros(hidden_dim)
 
     for position in range(binary_dim):
         X = np.array([[a[position], b[position]]])
-        layer_1 = layer_1_values[-position - 1]
-        prev_layer_1 = layer_1_values[-position - 2]
+        l1 = l1_values[-position - 1]
+        prev_l1 = l1_values[-position - 2]
 
         # Error at output layer.
-        layer_2_delta = layer_2_deltas[-position - 1]
+        l2_delta = l2_deltas[-position - 1]
         # Error at hidden layer.
-        layer_1_delta = (future_layer_1_delta.dot(synapse_h.T) + layer_2_delta.dot(synapse_1.T)) * sigmoid_output_to_derivative(layer_1)
+        l1_delta = (future_l1_delta.dot(synapse_h.T) + l2_delta.dot(synapse_1.T)) * sigmoid_output_to_derivative(l1)
 
         # Let's update all our weights so we can try again.
-        synapse_1_update += np.atleast_2d(layer_1).T.dot(layer_2_delta)
-        synapse_h_update += np.atleast_2d(prev_layer_1).T.dot(layer_1_delta)
-        synapse_0_update += X.T.dot(layer_1_delta)
+        synapse_1_update += np.atleast_2d(l1).T.dot(l2_delta)
+        synapse_h_update += np.atleast_2d(prev_l1).T.dot(l1_delta)
+        synapse_0_update += X.T.dot(l1_delta)
 
-        future_layer_1_delta = layer_1_delta
+        future_l1_delta = l1_delta
 
 synapse_0 += synapse_0_update * alpha
 synapse_1 += synapse_1_update * alpha

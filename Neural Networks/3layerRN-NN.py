@@ -10,13 +10,13 @@ def nonlin(x, deriv=False):
     return 1/(1+np.exp(-x))
 
 # Input data
-X = np.array([[0,0,1],
+X_train = np.array([[0,0,1],
             [0,1,1],
             [1,0,1],
             [1,1,1]])
 
 # Output data
-y = np.array([[0],
+y_train = np.array([[0],
             [1],
             [1],
             [0]])
@@ -34,12 +34,12 @@ for j in range(60000):
 
     # Forward propagation
     # Feed forward through layers 0, 1, and 2.
-    l0 = X
+    l0 = X_train
     l1 = nonlin(np.dot(l0, syn0))
     l2 = nonlin(np.dot(l1, syn1))
 
     # How much did we miss the target value?
-    l2_error = y - l2
+    l2_error = y_train - l2
 
     if (j % 10000) == 0:
         print "Error:" + str(np.mean(np.abs(l2_error)))

@@ -18,19 +18,19 @@ X = data[['race', 'hours_per_week', 'occupation', 'education', 'workclass']]
 Y = data['sex'].values.tolist()
 
 # Split the data into test and training (30% for test).
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3)
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3)
 
 # Instantiate the classifier.
 clf = RandomForestClassifier(n_estimators=1000)
 
 # Train the classifier using the training data.
-clf = clf.fit(X_train, Y_train)
+clf = clf.fit(X_train, y_train)
 
 # Validate the classifier.
-accuracy = clf.score(X_test, Y_test)
+accuracy = clf.score(X_test, y_test)
 print 'Accuracy: ' + str(accuracy)
 
 # Make a confusion matrix.
 prediction = clf.predict(X_test)
-cm = confusion_matrix(prediction, Y_test)
+cm = confusion_matrix(prediction, y_test)
 print cm

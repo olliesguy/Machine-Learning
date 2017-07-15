@@ -25,24 +25,24 @@ class NeuralNetwork():
     def __sigmoid_derivative(self, x):
         return x * (1 - x)
 
-    # We train the neural netowrk through a process of trial and error.
+    # We train the neural network through a process of trial and error.
     # Adjusting the synaptic weights each time.
-    def train(self, training_set_inputs, training_set_outputs, number_of_training_iterations):
+    def train(self, X_train, y_train, number_of_training_iterations):
         for iteration in xrange(number_of_training_iterations):
             # Pass the training set through our neural network (a single neuron).
-            output = self.think(training_set_inputs)
+            output = self.think(X_train)
 
             # Calculate the error
             # (The difference between the desired output and the predicted output).
-            error = training_set_outputs - output
+            l1_error = y_train - output
 
             # Multiply the error by the input and again by the gradient of the Sigmoid curve.
             # This means less confident weights are adjusted more.
             # This means inputs, which are zero, do not cause changes to the weights.
-            adjustment = dot(training_set_inputs.T, error*self.__sigmoid_derivative(output))
+            l1_adjustment = dot(X_train.T, l1_error*self.__sigmoid_derivative(output))
 
             # Adjust the weights.
-            self.synaptic_weights += adjustment
+            self.synaptic_weights += l1_adjustment
 
         #The neural network thinks.
         def think(self, inputs):
@@ -59,12 +59,12 @@ if __name__ == "__main__":
 
     # The training set. We have 4 examples,
     # each consisting of 3 input values and 1 output value.
-    training_set_inputs = array([[0, 0, 1], [1, 1, 1], [1, 0, 1], [0, 1, 1]])
-    training_set_outputs = array([[0, 1, 1, 0]]).T
+    X_train = array([[0, 0, 1], [1, 1, 1], [1, 0, 1], [0, 1, 1]])
+    y_train = array([[0, 1, 1, 0]]).T
 
     # Train the neural network using a training set.
     # Do it 10,000 times and make small adjustments each time.
-    neural_network.train(training_set_inputs, training_set_outputs, 10000)
+    neural_network.train(X_train, y_train, 10000)
 
     print "New synaptic weights after trainings: "
     print neural_network.synaptic_weights

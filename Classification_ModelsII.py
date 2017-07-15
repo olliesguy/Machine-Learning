@@ -3,52 +3,52 @@ import unittest
 class TestClassifiers(unittest.TestCase):
 
     # Training dataset for [height, weight, shoe_size].
-    X = [[181, 80, 44], [177, 70, 43], [160, 60, 38], [154, 54, 37], [166, 65, 40], [190, 90, 47], [175, 64, 39],
+    X_train = [[181, 80, 44], [177, 70, 43], [160, 60, 38], [154, 54, 37], [166, 65, 40], [190, 90, 47], [175, 64, 39],
      [177, 70, 40], [159, 55, 37], [171, 75, 42], [181, 85, 43]]
 
-    Y = ['male', 'male', 'female', 'female', 'male', 'male', 'female', 'female', 'female', 'male', 'male']
+    y_train = ['male', 'male', 'female', 'female', 'male', 'male', 'female', 'female', 'female', 'male', 'male']
 
-    def test_decision_tree(X, Y):
+    def test_decision_tree(X_train, y_train):
         from sklearn import tree
 
         clf = tree.DecisionTreeClassifier()
-        clf = clf.fit(X, Y)
+        clf = clf.fit(X_train, y_train)
 
         prediction = clf.predict([[190, 70, 43]])
         print 'Decision Tree prediction: ' + prediction
 
-    def test_random_forest(X, Y):
+    def test_random_forest(X_train, y_train):
         from sklearn.ensemble import RandomForestClassifier
 
         clf = RandomForestClassifier(n_estimators=2)
-        clf = clf.fit(X, Y)
+        clf = clf.fit(X_train, y_train)
 
         prediction = clf.predict([[190, 70, 43]])
         print 'Random Forest prediction: ' + prediction
 
-    def test_k_nearest_neighbour(X, Y):
+    def test_k_nearest_neighbour(X_train, y_train):
         from sklearn.neighbors import KNeighborsClassifier
 
         neigh = KNeighborsClassifier(n_neighbors=3)
-        neigh.fit(X, Y)
+        neigh.fit(X_train, y_train)
 
         prediction = neigh.predict([190, 70, 43])
         print 'K Nearest Neighbors prediction: ' + prediction
 
-    def test_logisitc_regression(X, Y):
+    def test_logisitc_regression(X_train, y_train):
         from sklearn.linear_model import LogisticRegression
 
         lin_mod = LogisticRegression()
-        lin_mod.fit(X, Y)
+        lin_mod.fit(X_train, y_train)
 
         prediction = lin_mod.predict([[190, 70, 43]])
         print 'Logistic Regression prediction: ' + prediction
 
-    def test_naive_bayes(X, Y):
+    def test_naive_bayes(X_train, y_train):
         from sklearn.naive_bayes import GaussianNB
 
         gnb = GaussianNB
-        gnb = gnb.fit(X, Y)
+        gnb = gnb.fit(X_train, y_train)
 
         prediction = gnb.predict([[190, 70, 43]])
         print 'Naive-Bayes prediction: ' + prediction
@@ -58,10 +58,10 @@ class TestClassifiers(unittest.TestCase):
         from sknn.mlp import Classifier, Layer
         import numpy as np
         # Training dataset for [height, weight, shoe_size].
-        X = np.array[[181, 80, 44], [177, 70, 43], [160, 60, 38], [154, 54, 37], [166, 65, 40], [190, 90, 47], [175, 64, 39],
+        X_train = np.array[[181, 80, 44], [177, 70, 43], [160, 60, 38], [154, 54, 37], [166, 65, 40], [190, 90, 47], [175, 64, 39],
              [177, 70, 40], [159, 55, 37], [171, 75, 42], [181, 85, 43]]
 
-        Y = np.array['male', 'male', 'female', 'female', 'male', 'male', 'female', 'female', 'female', 'male', 'male']
+        y_train = np.array['male', 'male', 'female', 'female', 'male', 'male', 'female', 'female', 'female', 'male', 'male']
 
         nn = Classifier(
             layers = [
@@ -71,7 +71,7 @@ class TestClassifiers(unittest.TestCase):
             learning_rate=0.001,
             n_iter=25
         )
-        nn.fit(X, Y)
+        nn.fit(X_train, y_train)
 
         prediction = nn.predict([[190, 70, 43]])
         print 'Artificial NN: ' + prediction

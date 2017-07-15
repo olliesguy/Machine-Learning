@@ -35,12 +35,12 @@ def mode(X, mask, W, b, W_prime, b_prime):
 Z = model(X, mask, W, b, W_prime, b_prime)
 
 # Create cost function.
-cost = tf.reduce_sum(tf.pow(X - Z, 2)) # minimise squared error.
+cost = tf.reduce_sum(tf.pow(X - Z, 2)) # Minimise squared error.
 train_op = tf.train.GradientDescentOptimizer(0.02).minimize(cost) # Construct an optimiser with gradient decent.
 
 # Load MNIST data.
 mnist = input_data.read_date_sets("MNIST_date/", one_hot=True)
-trX, trY, teX, teY = mnist.train.images, mnist.train.labels, mnist.test.images, mnist.test.labels
+X_train, y_train, X_test, y_test = mnist.train.images, mnist.train.labels, mnist.test.images, mnist.test.labels
 
 # Launch the graph in a session.
 with tf.Session() as sess:
@@ -48,10 +48,10 @@ with tf.Session() as sess:
     tf.initialize_all_variables().run()
 
     for i in range(100):
-        for start, end in zip(range(0, len(trX), 128), range(128, len(trX), 128)):
-            input_ = trX[start:end]
+        for start, end in zip(range(0, len(X_train), 128), range(128, len(X_train), 128)):
+            input_ = X_train[start:end]
             mask_np = np.random.binomial(1, 1 - corruption_level, input_.shape)
             sess.run(train_op, feed_dict={X: input_, mask: mask_np})
 
-            mask_np = np.random.binomial(1, 1 - corruption_level, teX.shape)
-            print(i, sess.run(cost, feed_dict={X: teX, mask: mask_np}))
+            mask_np = np.random.binomial(1, 1 - corruption_level, X_test.shape)
+            print(i, sess.run(cost, feed_dict={X: X_test, mask: mask_np}))

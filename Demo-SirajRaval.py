@@ -16,7 +16,7 @@ learning_rate = 0.01
 momentum = 0.9
 
 # Non deterministic seed a RN generator.
-np.random.seed(0)
+np.random.seed(1)
 
 # Sigmoid function
 def sigmoid(x):
