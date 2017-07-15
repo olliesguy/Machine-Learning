@@ -48,5 +48,5 @@ cm = confusion matrix (or error matrix), a visualisation of the performance on a
 * Adam Geitgey's [Machine Learning is Fun](https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471) (series of Medium posts)
 * Andrew Trask's [A NN in 11 lines of Python](https://iamtrask.github.io/2015/07/12/basic-python-network/) and Milo Spencer-Harper's [variant](https://medium.com/technology-invention-and-more/how-to-build-a-simple-neural-network-in-9-lines-of-python-code-cc8f23647ca1)
 * Jason Brownlee's [overview of ML topics](http://machinelearningmastery.com/start-here/) (free blog/tutorials and paid training)
-* Arun Agrahri's far more [substantiative list](https://hackernoon.com/index-of-best-ai-machine-learning-resources-71ba0c73e34d)
+* Arun Agrahri's far more [substantiative resource list](https://hackernoon.com/index-of-best-ai-machine-learning-resources-71ba0c73e34d)
 Welcome any further suggestions...
