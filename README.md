@@ -44,9 +44,9 @@ cm = confusion matrix (or error matrix), a visualisation of the performance on a
 * Siraj Raval's [YouTube channel](https://www.youtube.com/channel/UCWN3xxRkmTPmbKwht9FuE5A)
 * Brandon Rohrer's [YouTube videos](https://www.youtube.com/user/BrandonRohrer) - more for explanation than coded examples.
 * Per Harald Borgen - ML in a [Week](https://medium.com/learning-new-stuff/machine-learning-in-a-week-a0da25d59850) or [Year](https://medium.com/learning-new-stuff/machine-learning-in-a-year-cdb0b0ebd29c)
-* Andrew Ng [Machine Learning at Stanford](https://www.coursera.org/learn/machine-learning) (MOOC via Coursera)
-* Adam Geitgey's [Machine Learning is Fun](https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471) (series of Medium posts)
-* Andrew Trask's [A NN in 11 lines of Python](https://iamtrask.github.io/2015/07/12/basic-python-network/) and Milo Spencer-Harper's [variant](https://medium.com/technology-invention-and-more/how-to-build-a-simple-neural-network-in-9-lines-of-python-code-cc8f23647ca1)
+* Andrew Ng - [Machine Learning at Stanford](https://www.coursera.org/learn/machine-learning) (MOOC via Coursera)
+* Adam Geitgey - [Machine Learning is Fun](https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471) (series of Medium posts)
+* Andrew Trask - [A NN in 11 lines of Python](https://iamtrask.github.io/2015/07/12/basic-python-network/) and Milo Spencer-Harper's [variant](https://medium.com/technology-invention-and-more/how-to-build-a-simple-neural-network-in-9-lines-of-python-code-cc8f23647ca1)
 * Jason Brownlee's [overview of ML topics](http://machinelearningmastery.com/start-here/) (free blog/tutorials and paid training)
 * Arun Agrahri's far more [substantiative resource list](https://hackernoon.com/index-of-best-ai-machine-learning-resources-71ba0c73e34d)
 Welcome any further suggestions...
