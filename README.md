@@ -16,14 +16,14 @@ This folder encompasses a variety of simple and applied machine learning algorit
 An effort has been made to standardise variable names and comments across files to aid with learning different algorithms.
 
 ## Common Variables:
-~~~~
+'''python
 *X_train* = an array of feature inputs that are used for training the desired algorithm. Typically a subset of a larger dataset.
 *y_train* = the matching outputs for the training input data.
 *X_test* = an array of test variables (from the same dataset as X_train), which are used to validate the accuracy of the algorithms on "unseen" data.
 *y_test* = corresponding true output values for X_test variables.
 *l#* = layer number, where # equals any positive integer. Used in Neural Networks.
 *cm* = confusion matrix (or error matrix), a visualisation of the performance on an ML algorithm.
-~~~~
+'''
 
 ## Library Requirements:
 + numpy
