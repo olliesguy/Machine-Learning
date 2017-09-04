@@ -28,7 +28,7 @@ class NeuralNetwork():
     # We train the neural network through a process of trial and error.
     # Adjusting the synaptic weights each time.
     def train(self, X_train, y_train, number_of_training_iterations):
-        for iteration in xrange(number_of_training_iterations):
+        for iteration in range(number_of_training_iterations):
             # Pass the training set through our neural network (a single neuron).
             output = self.think(X_train)
 
@@ -44,18 +44,18 @@ class NeuralNetwork():
             # Adjust the weights.
             self.synaptic_weights += l1_adjustment
 
-        #The neural network thinks.
-        def think(self, inputs):
-            # Pass inputs through our neural netowrk (our single neuron).
-            return self.__sigmoid(dot(inputs, self.synaptic_weights))
+    #The neural network thinks.
+    def think(self, inputs):
+        # Pass inputs through our neural netowrk (our single neuron).
+        return self.__sigmoid(dot(inputs, self.synaptic_weights))
 
 
 if __name__ == "__main__":
     # Initialise a single neuron neural network.
     neural_network = NeuralNetwork()
 
-    print "Random starting synaptic weights: "
-    print neural_network.synaptic_weights
+    print ("Random starting synaptic weights: ")
+    print (neural_network.synaptic_weights)
 
     # The training set. We have 4 examples,
     # each consisting of 3 input values and 1 output value.
@@ -66,9 +66,9 @@ if __name__ == "__main__":
     # Do it 10,000 times and make small adjustments each time.
     neural_network.train(X_train, y_train, 10000)
 
-    print "New synaptic weights after trainings: "
-    print neural_network.synaptic_weights
+    print ("New synaptic weights after trainings: ")
+    print (neural_network.synaptic_weights)
 
     # Test the neural network with a new situation.
-    print "Considering new situtation [1, 0, 0] -> ?: "
-    print neural_network.think(array([1, 0, 0]))
+    print ("Considering new situtation [1, 0, 0] -> ?: ")
+    print (neural_network.think(array([1, 0, 0])))

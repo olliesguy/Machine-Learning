@@ -47,7 +47,7 @@ network = fully_connected(network, 2, activation='softmax')# Step 8: Fully-conne
 network = regression(network, optimizer='adam', loss='categorical_crossentropy', learning_rate=0.001)
 
 # Wrap the network in a model object.
-model = tflearn.DNN(network=, tensorboard_verbose=0, checkpoint_path='bird-classifier.tfl.ckpt')
+model = tflearn.DNN(network, tensorboard_verbose=0, checkpoint_path='bird-classifier.tfl.ckpt')
 
 # Train it for 100 training passes and monitor it as it goes.
 model.fit(X_train, y_train, n_epoch=100, shuffle=True, validation_set=(X_test, y_test), show_metrics=True, batch_size=96, snapshot_epoche=True, run_id='bird-classifier')

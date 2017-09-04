@@ -25,7 +25,7 @@ class NeuralNetwork():
     # We train the neural network through a process of trial and error.
     # Adjusting the synaptic weights each time.
     def train(self, X_train, y_train, number_of_training_iterations):
-        for iteration in xrange(number_of_training_iterations):
+        for iteration in range(number_of_training_iterations):
             # Pass the training set through our neural network.
             output_from_l1, output_from_l2 = self.think(X_train)
 
@@ -55,13 +55,13 @@ class NeuralNetwork():
 
     # The neural network prints its weights.
     def print_weights(self):
-        print "Layer 1 (4 neurons, each with 3 inputs): "
-        print self.l1.synpatic_weights
-        print "Layer 2 (1 neuron, with 4 inputs):"
-        print self.l2.synpatic_weights
+        print("Layer 1 (4 neurons, each with 3 inputs): ")
+        print(self.l1.synpatic_weights)
+        print("Layer 2 (1 neuron, with 4 inputs):")
+        print(self.l2.synpatic_weights)
 
 
-if __name__ == "__name__":
+if __name__ == "__main__":
     # Seed the RN generator
     random.seed(1)
 
@@ -74,7 +74,7 @@ if __name__ == "__name__":
     # Combine the layers to create a neural network
     neural_network = NeuralNetwork(l1, l2)
 
-    print "Stage 1) Random starting synaptic weights: "
+    print("Stage 1) Random starting synaptic weights: ")
     neural_network.print_weights()
 
     # The training set.
@@ -86,10 +86,10 @@ if __name__ == "__name__":
     # Do it 60,000 times and make small adjustments each time.
     neural_network.train(X_train, y_train, 60000)
 
-    print "Stage 2) New synaptic weights are training: "
+    print("Stage 2) New synaptic weights are training: ")
     neural_network.print_weights()
 
     # Test the neural network with a new situation.
-    print "Stage 3) Considering a new situation [1, 1, 0] -> ?: "
+    print("Stage 3) Considering a new situation [1, 1, 0] -> ?: ")
     hidden_state, output = neural_network.think(array([1, 1, 0]))
-    print output
+    print(output)

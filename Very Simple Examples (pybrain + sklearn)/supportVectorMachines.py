@@ -1,7 +1,7 @@
-from sklearn import tree
+from sklearn import metrics
+from sklearn.svm import SVC
 
-# Classification and Regression Trees (CART)
-cart = tree.DecisionTreeClassifier()
+svc = SVC()
 
 # Training dataset for [height, weight, shoe_size].
 X_train = [[181, 80, 44], [177, 70, 43], [160, 60, 38], [154, 54, 37], [166, 65, 40], [190, 90, 47], [175, 64, 39],
@@ -9,9 +9,12 @@ X_train = [[181, 80, 44], [177, 70, 43], [160, 60, 38], [154, 54, 37], [166, 65,
 
 y_train = ['male', 'male', 'female', 'female', 'male', 'male', 'female', 'female', 'female', 'male', 'male']
 
-cart = cart.fit(X_train, y_train)
-print(cart)
+svc.fit(X_train, y_train)
+print(svc)
 
-prediction = cart.predict([[190, 70, 43]])
+# Make prediction.
+prediction = svc.predict([[190, 70, 43]])
 
-print (prediction)
+# Summarise the fit of the model.
+print(metrics.classification_report(expected, prediction))
+print(metrics.confusion_matrix(expected, prediction))

@@ -23,7 +23,7 @@ np.random.seed(1)
 # Initialise weights randomly with mean 0
 syn0 = 2*np.random.random((3,1)) - 1
 
-for iter in xrange(10000):
+for iter in range(10000):
     # Fordward propagation
     l0 = X_train
     l1 = nonlin(np.dot(l0,syn0))
@@ -35,7 +35,7 @@ for iter in xrange(10000):
     l1_delta = l1_error * nonlin(l1,True)
 
     # Update weights
-    syn0 += np.dot(l0.T,li_delta)
+    syn0 += np.dot(l0.T,l1_delta)
 
-print "Output After Training: "
-print l1
+print ("Output After Training: ")
+print (l1)

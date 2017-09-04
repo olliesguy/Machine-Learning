@@ -42,7 +42,7 @@ for j in range(60000):
     l2_error = y_train - l2
 
     if (j % 10000) == 0:
-        print "Error:" + str(np.mean(np.abs(l2_error)))
+        print ("Error:" + str(np.mean(np.abs(l2_error))))
 
     # In what direction is the the target value?
     # Were we really sure? If so, don't change too much.
@@ -50,15 +50,15 @@ for j in range(60000):
     l2_delta = l2_error*nonlin(l2, deriv=True)
 
     # How much did each l1 value contribute to the l2 error (according to the weights)?
-    l1_error = l2_delta.ot(syn.T)
+    l1_error = l2_delta.dot(syn1.T)
 
     # In what direction is the target l1?
     # Were we really sure? If so, don't change too much.
-    l1_delta = l1_error*nonlin(l1, deriv=True)
+    l1_delta = l1_error * nonlin(l1, deriv=True)
 
     # Update weights.
     syn1 += l1.T.dot(l2_delta)
     syn0 += l0.T.dot(l1_delta)
 
-print "Output after training: "
-print l2
+print ("Output after training: ")
+print (l2)

@@ -2,12 +2,12 @@ import copy, numpy as np
 
 # Compute Sigmoid nonlinearity.
 def sigmoid(x):
-    output = 1.0 / (1.0 + np.exp(-x))
+    output = 1 / (1 + np.exp(-x))
     return output
 
 # Convert output of Sigmoid function to its derivative.
 def sigmoid_output_to_derivative(output):
-    return output * (1- output)
+    return output * (1-output)
 
 # Training dataset generation.
 int2binary = {}
@@ -97,21 +97,21 @@ for j in range(10000):
 
         future_l1_delta = l1_delta
 
-synapse_0 += synapse_0_update * alpha
-synapse_1 += synapse_1_update * alpha
-synapse_h += synapse_h_update * alpha
+    synapse_0 += synapse_0_update * alpha
+    synapse_1 += synapse_1_update * alpha
+    synapse_h += synapse_h_update * alpha
 
-synapse_0_update *= 0
-synapse_1_update *= 0
-synapse_h_update *= 0
-n
-# Print out progress.
-if( j % 1000 == 0):
-    print "Error: " + str(overallError)
-    print "Pred: " + str(d)
-    print "True: " + str(c)
-    out = 0
-    for index, x in enumerate(reversed(d)):
-        out += x * pow(2, index)
-    print str(a_int) + " + " + str(b_int) + " = " + str(out)
-    print "-----------"
+    synapse_0_update *= 0
+    synapse_1_update *= 0
+    synapse_h_update *= 0
+
+    # Print out progress.
+    if( j % 1000 == 0):
+        print("Error: " + str(overallError))
+        print("Pred: " + str(d))
+        print("True: " + str(c))
+        out = 0
+        for index, x in enumerate(reversed(d)):
+            out += x * pow(2, index)
+        print(str(a_int) + " + " + str(b_int) + " = " + str(out))
+        print("-----------")
